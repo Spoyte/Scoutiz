@@ -1,3 +1,32 @@
+# Scoutix
+
+Scoutix is a decentralized scouting platform. Anyone can create future proofs of interest in a player, with a description and choose to reveal it later and to whomever they want. A confidence score is given to unrevealed picks through tokens hold, how long, and other parameters.
+
+# Description
+Scoutix is a decentralized scouting platform. In the football world, and generally in the sport world, scouting is an important part of the industry. However, nowadays, local people can have more accurate information than scouting departments far away. The next world star could emerge from anywhere, and no football club would want to miss him. 
+Currently, clubs have scouting departments that are big, slow, and expensive. Often, they need to choose the places they keep informed about and place they give up on.
+With Scoutix, anyone can create a future proof of interest in a player, with a description of him. This is the first part of the platform, but not the only one. This part is important to let future bright scouts emerge with proof of their abilities. If someone can prove in 2 or 3 years that he was the first to let his eyes on the new Messi/Ronaldo, clubs will suddenly be interested in having his information. Today this is not possible, as you cannot really prove that you knew a certain player would become a great one, and that you do not just say this for every young player.
+Through Scoutix, people can choose to reveal their predictions whenever they want, with a timestamp and exact description of their prediction about the players, to whomever they want.
+A confidence score is given to unrevealed picks through tokens holdings, how long, and other parameters.
+For example, having tokens $PSG since a long time might indicate an interest in this club and its region, given a higher confidence on the picks of this person if they are French / Parisians players or if they have a link to the club (playing there in the junior teams, plying against this team a lot, etc…)
+Other than this, as the predictions will become either accurate and revealed, or will stay hidden, it will be able to affect the confidence score. After a few years, a prediction will be either correct, or not good enough for the scout to want to reveal it, which will indicate it was a bad one, possibly reducing his confidence score.
+
+# How it’s made
+
+The project makes use of solidity and the EVM for the smart contracts. I used Remix and Hardhat for developing the smart contracts. I used scaffold with React.js, nextJS and hardhat for the frontend and wagmi for the wallet connectivity. With Chiliz I configured Metamask enabling connectivity to the mainnet and spicy testnet. I also added Arbitrum testnet to test deployment, with the goal to allow usage of the Dapp also from other network, using a bridge to get information about the holdings of the user at submission of new data. I also used Worldcoin to avoid Sybil attacks where someone would create many different users that all predict a few players, in order to have at least one account where it would be considered as a high confidence account that only made great predictions.
+The front create a hash of the information provided by the user, and then the smart-contract store this hash and link it to the user’s address. Then the actual data is stored encrypted using the private key of the user, in Filecoin (this is not implemented). Another thing that could be a nice thing to add, is the ability through ZK for exemple, to allow people to search for profiles they want (let’s say an attacker aged 16-19, good in possession style, left footed, right wing) without revealing all the details of the scout’s information. The scout would just prove he has this type of profile.
+Currently, the market place is in the form of a manual P2P market.
+
+
+
+
+
+
+
+
+
+
+
 # 🏗 Scaffold-ETH 2
 
 <h4 align="center">
