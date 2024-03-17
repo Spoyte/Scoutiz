@@ -1,10 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import MyForm from "../components/MyForm";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
+
+// Adjust the path if needed
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -37,6 +40,10 @@ const Home: NextPage = () => {
               packages/hardhat/contracts
             </code>
           </p>
+          <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
+            {/* Render the MyForm component here */}
+            <MyForm />
+          </div>
         </div>
 
         <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
