@@ -1,4 +1,7 @@
 import React from "react";
+import { FormEvent } from "react";
+
+// Import FormEvent here
 
 interface Player {
   name: string;
@@ -9,6 +12,15 @@ interface Player {
   style: string;
   club: string;
 }
+
+const nationalities = [
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "Andorra",
+  "Angola",
+  // ... include all nationalities
+];
 
 const MyForm: React.FC = () => {
   const [player, setPlayer] = React.useState<Player>({
@@ -39,7 +51,7 @@ const MyForm: React.FC = () => {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("Player:", player);
     // Submit form data to your backend here
@@ -47,53 +59,78 @@ const MyForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
-      <input type="text" id="name" name="name" value={player.name} onChange={handleChange} />
-
-      <label htmlFor="nationality">Nationality:</label>
-      <select id="nationality" name="nationality" value={player.nationality} onChange={handleChange}>
-        <option value="">Select Nationality</option>
-        {/* Add your nationality options here */}
-      </select>
-
-      <label htmlFor="birthdate">Birthdate:</label>
-      <input
-        type="date"
-        id="birthdate"
-        name="birthdate"
-        value={player.birthdate.toISOString().substring(0, 10)}
-        onChange={handleChange}
-      />
-
-      <label htmlFor="strongFoot">Strong Foot:</label>
-      <select id="strongFoot" name="strongFoot" value={player.strongFoot} onChange={handleChange}>
-        <option value="Left">Left</option>
-        <option value="Right">Right</option>
-      </select>
-
-      <label>Position:</label>
-      <div>
-        <input type="checkbox" id="position-GK" name="position" value="GK" onChange={handlePositionChange} />
-        <label htmlFor="position-GK">Goalkeeper</label>
-      </div>
-      <div>
-        <input type="checkbox" id="position-DF" name="position" value="DF" onChange={handlePositionChange} />
-        <label htmlFor="position-DF">Defender</label>
-      </div>
-      <div>
-        <input type="checkbox" id="position-MF" name="position" value="MF" onChange={handlePositionChange} />
-        <label htmlFor="position-MF">Midfielder</label>
-      </div>
-      <div>
-        <input type="checkbox" id="position-FW" name="position" value="FW" onChange={handlePositionChange} />
-        <label htmlFor="position-FW">Forward</label>
+      {/* Name */}
+      <div className="form-group">
+        <label htmlFor="name">Name:</label>
+        <input type="text" id="name" name="name" value={player.name} onChange={handleChange} />
       </div>
 
-      <label htmlFor="style">Style:</label>
-      <input type="text" id="style" name="style" value={player.style} onChange={handleChange} />
+      {/* Nationality */}
+      <div className="form-group">
+        <label htmlFor="nationality">Nationality:</label>
+        <select id="nationality" name="nationality" value={player.nationality} onChange={handleChange}>
+          <option value="">Select Nationality</option>
+          {nationalities.map(nationality => (
+            <option key={nationality} value={nationality}>
+              {nationality}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <label htmlFor="club">Club:</label>
-      <input type="text" id="club" name="club" value={player.club} onChange={handleChange} />
+      {/* Birthdate */}
+      <div className="form-group">
+        <label htmlFor="birthdate">Birthdate:</label>
+        <input
+          type="date"
+          id="birthdate"
+          name="birthdate"
+          value={player.birthdate.toISOString().substring(0, 10)}
+          onChange={handleChange}
+        />
+      </div>
+
+      {/* Strong Foot */}
+      <div className="form-group">
+        <label htmlFor="strongFoot">Strong Foot:</label>
+        <select id="strongFoot" name="strongFoot" value={player.strongFoot} onChange={handleChange}>
+          <option value="Left">Left</option>
+          <option value="Right">Right</option>
+        </select>
+      </div>
+
+      {/* Position */}
+      <div className="form-group">
+        <label>Position:</label>
+        <div>
+          <input type="checkbox" id="position-GK" name="position" value="GK" onChange={handlePositionChange} />
+          <label htmlFor="position-GK">Goalkeeper</label>
+        </div>
+        <div>
+          <input type="checkbox" id="position-DF" name="position" value="DF" onChange={handlePositionChange} />
+          <label htmlFor="position-DF">Defender</label>
+        </div>
+        <div>
+          <input type="checkbox" id="position-MF" name="position" value="MF" onChange={handlePositionChange} />
+          <label htmlFor="position-MF">Midfielder</label>
+        </div>
+        <div>
+          <input type="checkbox" id="position-FW" name="position" value="FW" onChange={handlePositionChange} />
+          <label htmlFor="position-FW">Forward</label>
+        </div>
+      </div>
+
+      {/* Style */}
+      <div className="form-group">
+        <label htmlFor="style">Style:</label>
+        <input type="text" id="style" name="style" value={player.style} onChange={handleChange} />
+      </div>
+
+      {/* Club */}
+      <div className="form-group">
+        <label htmlFor="club">Club:</label>
+        <input type="text" id="club" name="club" value={player.club} onChange={handleChange} />
+      </div>
 
       <button type="submit">Submit</button>
     </form>
