@@ -6,7 +6,7 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 /// @custom:security-contact security@scoutix.com
-contract Scoutix is Initializable, AccessControlUpgradeable {
+contract YourContract is Initializable, AccessControlUpgradeable {
 
     mapping(address => string[]) public playerInfoSHAs; // Map to store SHAs for each address
 
